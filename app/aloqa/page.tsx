@@ -30,7 +30,7 @@ const page = () => {
   return (
     <div>
       {/* Header image section */}
-      <div className="relative bg-[url(ʻ/bizbilanboglaning.pngʻ)] bg-cover bg-no-repeat bg-center h-[300px] md:h-[463px] flex items-center">
+      <div className="relative bg-[url('/bizbilanboglaning.png')] bg-cover bg-no-repeat bg-center h-[300px] md:h-[463px] flex items-center">
         <div className="container">
           <h1 className="absolute top-1/2 left-5 ml-[120px] transform -translate-y-1/2 text-white text-2xl md:text-4xl font-bold hidden md:block">
             Biz bilan bogʻlaning
