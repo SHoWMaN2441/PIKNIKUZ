@@ -11,7 +11,6 @@ interface ProductsProps {
 }
 
 const Products = ({ selectedCategory }: ProductsProps) => {
-  const router = useRouter();
   const { products, fetchProducts } = useProductStore((state) => state);
   const [loading, setLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
@@ -27,15 +26,11 @@ const Products = ({ selectedCategory }: ProductsProps) => {
 
   if (loading) return <p className="text-center p-4">Yuklanmoqda...</p>;
 
-  const formatPrice = (price: number) => {
-    return price.toLocaleString();
-  };
-
   const handleAddToCart = (product: any) => {
     let cart = JSON.parse(localStorage.getItem("cart") || "[]");
     if (cart.length === 0) {
       cart.push({ ...product, quantity: 1 });
-      } else {
+    } else {
       const existingProduct = cart.find((item: any) => item.id === product.id);
       if (existingProduct) {
         existingProduct.quantity += 1;
@@ -67,7 +62,7 @@ const Products = ({ selectedCategory }: ProductsProps) => {
               <Link href={`/mahsulotlar/${product.id}`}>
                 <img
                   src={`https://api.piknicuz.com/api/uploads/images/${product.image_src}`}
-                  alt={product.name}
+                  alt={String(product.name)}
                   className="w-full h-full object-contain"
                 />
               </Link>
@@ -96,7 +91,7 @@ const Products = ({ selectedCategory }: ProductsProps) => {
           </div>
         ))}
       </div>
-        
+
       {!showAll && filteredProducts.length > 4 && (
         <button
           onClick={() => setShowAll(true)}

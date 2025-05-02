@@ -2,6 +2,7 @@ import axios from "axios";
 import { create } from "zustand";
 
 type Product = {
+  [x: string]: number;
   id: number;
   title: string;
   description: string;
