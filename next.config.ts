@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "api.piknicuz.com", // ❗ Yangi domen qo'shildi
+        hostname: "api.piknicuz.com", // ❗ Yangi domen qoʻshildi
       },
     ],
   },

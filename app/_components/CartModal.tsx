@@ -20,7 +20,7 @@ export default function CartModal() {
 
   const handleSubmit = () => {
     if (!form.name || !form.phone || !form.address) {
-      toast.error("Iltimos, barcha majburiy maydonlarni to'ldiring!");
+      toast.error("Iltimos, barcha majburiy maydonlarni toʻldiring!");
       return;
     }
 
@@ -34,7 +34,7 @@ export default function CartModal() {
     <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-xl space-y-4 w-full max-w-md">
         <p className="text-xl font-bold mb-4 text-center">
-          Buyurtma Berish Ma'lumotlarini Kiriting
+          Buyurtma Berish Maʻlumotlarini Kiriting
         </p>
         <div>
           <p>Ism va familiya</p>

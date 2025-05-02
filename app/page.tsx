@@ -72,8 +72,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* O'ng qism */}
-        <div className="o'ng w-full md:w-[596px] flex justify-center md:justify-end">
+        {/* Oʻng qism */}
+        <div className="oʻng w-full md:w-[596px] flex justify-center md:justify-end">
           <Image
             src="/sarguzasht.png"
             alt="img"
