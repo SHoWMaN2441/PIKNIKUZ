@@ -5,9 +5,15 @@ import { useEffect, useState } from "react";
 import Question from "./_components/question";
 import Products from "./mahsulotlar/page";
 
+type Category = {
+  id: string;
+  name: string;
+  image_src: string;
+};
+
 export default function Home() {
-  const [categories, setCategories] = useState<any[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCategories = async () => {

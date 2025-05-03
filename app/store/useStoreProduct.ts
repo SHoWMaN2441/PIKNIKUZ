@@ -1,13 +1,13 @@
 import axios from "axios";
 import { create } from "zustand";
 
-type Product = {
-  [x: string]: number;
-  id: number;
+export type Product = {
+  id: string;
   title: string;
   description: string;
   price: number;
-  category: string;
+  category_id: string;
+  image_src: string;
 };
 
 type ProductStore = {

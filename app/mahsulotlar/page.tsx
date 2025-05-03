@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useProductStore from "../store/useStoreProduct";
+import useProductStore, { Product } from "../store/useStoreProduct";
 import { FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
 
 interface ProductsProps {
-  selectedCategory: number | null;
+  selectedCategory: string | null;
 }
+
+type Cart = Product & { quantity: number };
 
 const Products = ({ selectedCategory }: ProductsProps) => {
   const { products, fetchProducts } = useProductStore((state) => state);
@@ -25,12 +27,12 @@ const Products = ({ selectedCategory }: ProductsProps) => {
 
   if (loading) return <p className="text-center p-4">Yuklanmoqda...</p>;
 
-  const handleAddToCart = (product: any) => {
-    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const handleAddToCart = (product: Product) => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
     if (cart.length === 0) {
       cart.push({ ...product, quantity: 1 });
     } else {
-      const existingProduct = cart.find((item: any) => item.id === product.id);
+      const existingProduct = cart.find((item: Cart) => item.id === product.id);
       if (existingProduct) {
         existingProduct.quantity += 1;
       } else {
@@ -61,7 +63,7 @@ const Products = ({ selectedCategory }: ProductsProps) => {
               <Link href={`/mahsulotlar/${product.id}`}>
                 <img
                   src={`https://api.piknicuz.com/api/uploads/images/${product.image_src}`}
-                  alt={String(product.name)}
+                  alt={String(product.title)}
                   className="w-full h-full object-contain"
                 />
               </Link>
