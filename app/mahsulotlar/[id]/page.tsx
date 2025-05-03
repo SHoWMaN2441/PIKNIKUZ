@@ -143,7 +143,7 @@ const ProductDetailClient = () => {
             >
               -
             </button>
-            <p className="w-10 text-center flex items-center justify-center border rounded py-2">
+            <p className="w-10 text-center flex items-center mt-3 justify-center border rounded py-2">
               {quantity}
             </p>
             <button
@@ -169,7 +169,7 @@ const ProductDetailClient = () => {
           <video
             controls
             src={`https://api.piknicuz.com/api/uploads/images/${product.video_src}`}
-            className="w-full rounded-lg h-[650px] object-cover"
+            className="w-full rounded-lg md:h-[650px] h-[300px] "
           />
         </div>
       )}
