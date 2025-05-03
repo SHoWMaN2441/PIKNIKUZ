@@ -11,7 +11,7 @@ interface ProductsProps {
 
 type Cart = Product & { quantity: number };
 
-const Products = ({ selectedCategory }: ProductsProps) => {
+const Products123 = ({ selectedCategory }: ProductsProps) => {
   const { products, fetchProducts } = useProductStore((state) => state);
   const [loading, setLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
@@ -105,4 +105,4 @@ const Products = ({ selectedCategory }: ProductsProps) => {
   );
 };
 
-export default Products;
+export default Products123;
