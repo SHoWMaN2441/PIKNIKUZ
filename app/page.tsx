@@ -90,23 +90,16 @@ export default function Home() {
         </h1>
 
         <div className="flex overflow-x-scroll gap-4 mb-10 px-2 scrollbar-none">
-          <div
-            onClick={() => setSelectedCategory(null)}
-            className={`flex items-center min-w-[100px] h-[80px] bg-[#F1F1F1] hover:bg-green-100 hover:border hover:border-green-500 rounded-lg p-2 text-center cursor-pointer transition-all duration-300 ${
-              selectedCategory === null
-                ? "bg-green-100 border border-green-500"
-                : ""
-            }`}
-          >
-            <div className="flex items-center min-w-[100px] gap-2 h-[80px] mx-auto">
-              <p className="text-xs sm:text-sm font-medium">Barchasi</p>
-            </div>
-          </div>
-
           {categories.map((category) => (
             <div
               key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
+              onClick={() => {
+                if (selectedCategory === category.id) {
+                  setSelectedCategory(null);
+                } else {
+                  setSelectedCategory(category.id);
+                }
+              }}
               className={`flex items-center min-w-[160px] sm:min-w-[180px] md:min-w-[200px] h-[80px] sm:h-[90px] md:h-[100px] bg-[#F1F1F1] hover:bg-green-100 hover:border hover:border-green-500 rounded-lg p-2 sm:p-4 text-center cursor-pointer transition-all duration-300 ${
                 selectedCategory === category.id
                   ? "bg-green-100 border border-green-500"

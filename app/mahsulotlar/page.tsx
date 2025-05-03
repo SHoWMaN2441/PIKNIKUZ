@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import useProductStore from "../store/useStoreProduct";
 import { FaShoppingCart } from "react-icons/fa";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 interface ProductsProps {

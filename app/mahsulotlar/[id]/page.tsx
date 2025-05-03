@@ -72,11 +72,11 @@ const ProductDetailClient = () => {
   return (
     <div className="p-4 max-w-7xl mx-auto">
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="flex">
-          <div className="flex gap-2 min-w-[700px]">
+        <div className="flex flex-col md:flex-row ">
+          <div className="flex flex-col sm:flex-row md:flex-row gap-4 md:min-w-[700px]">
             {product.product_images && product.product_images.length > 0 && (
-              <div className="min-w-[150px] h-[500px] overflow-y-auto scrollbar-none">
-                <div className="flex flex-col gap-4 ">
+              <div className="flex sm:flex-row md:flex-col gap-2 overflow-x-auto md:overflow-y-auto scrollbar-none md:min-w-[150px] md:h-[500px]">
+                <div className="flex sm:flex-row md:flex-col gap-4">
                   {product.product_images.map((img: any) => {
                     const imageUrl = `https://api.piknicuz.com/api/uploads/images/${img.images_src}`;
                     const isSelected = selectedImage === imageUrl;
@@ -88,19 +88,20 @@ const ProductDetailClient = () => {
                         alt="Extra"
                         onClick={() => setSelectedImage(imageUrl)}
                         className={`h-24 w-full object-contain rounded-lg border transition-transform duration-300 cursor-pointer
-                          ${
-                            isSelected
-                              ? "border-4 border-blue-600"
-                              : "border-green-300 hover:border-blue-400"
-                          }
-                        `}
+                      ${
+                        isSelected
+                          ? "border-4 border-blue-600"
+                          : "border-green-300 hover:border-blue-400"
+                      }
+                    `}
                       />
                     );
                   })}
                 </div>
               </div>
             )}
-            <div className="bg-gray-100 rounded-lg p-4 border-2  shadow-lg ">
+
+            <div className="bg-gray-100 rounded-lg p-4 border-2 shadow-lg flex-1">
               <img
                 src={
                   selectedImage
@@ -108,7 +109,7 @@ const ProductDetailClient = () => {
                     : `https://api.piknicuz.com/api/uploads/images/${product.image_src}`
                 }
                 alt={product.title}
-                className="w-full h-[500px] object-cover rounded-lg"
+                className="w-full h-[500px] object-contain rounded-lg"
               />
             </div>
           </div>
@@ -135,18 +136,14 @@ const ProductDetailClient = () => {
             dangerouslySetInnerHTML={{ __html: product.description }}
           />
 
-          {/* Counter */}
-          <div className="flex items-center  gap-4 mt-6 mb-5 text-center">
+          <div className="flex items-center gap-4 mt-6 mb-5">
             <button
               onClick={handleDecrement}
               className="w-10 h-10 flex items-center justify-center bg-gray-200 rounded hover:bg-gray-300 text-xl"
             >
               -
             </button>
-            <p
-              className="w-10 text-center flex items-center
-              justify-center border mt-3 rounded py-2"
-            >
+            <p className="w-10 text-center flex items-center justify-center border rounded py-2">
               {quantity}
             </p>
             <button
@@ -159,7 +156,7 @@ const ProductDetailClient = () => {
 
           <button
             onClick={() => handleAddToCart(product)}
-            className="btn btn-success text-white font-semibold py-3 px-6 rounded-[50%] transition"
+            className="btn btn-success text-white font-semibold py-3 px-6 rounded-full transition"
           >
             Add to Cart
           </button>
