@@ -8,6 +8,13 @@ export type Product = {
   price: number;
   category_id: string;
   image_src: string;
+  product_images: {
+    id: string;
+    image_id: string;
+    images_src: string;
+    product_id: string;
+  }[];
+  video_src: string;
 };
 
 type ProductStore = {

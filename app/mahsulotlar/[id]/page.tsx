@@ -2,12 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import useProductStore from "../../store/useStoreProduct";
+import useProductStore, { Product } from "../../store/useStoreProduct";
+
+export type Cart = {
+  product: Product;
+  id: string;
+  quantity: number;
+};
 
 const ProductDetailClient = () => {
   const { id } = useParams();
   const { products, fetchProducts } = useProductStore((state) => state);
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
@@ -24,7 +30,7 @@ const ProductDetailClient = () => {
   useEffect(() => {
     if (products.length > 0 && id) {
       const foundProduct = products.find((item) => item.id === id);
-      setProduct(foundProduct);
+      setProduct(foundProduct!);
       setLoading(false);
     }
   }, [id, products]);
@@ -38,14 +44,14 @@ const ProductDetailClient = () => {
       setQuantity((prev) => prev - 1);
     }
   };
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product: Product) => {
     const productData = {
       id: product.id,
       title: product.title,
       image_src: product.image_src,
       price: product.price,
       description: product.description,
-      category: product.category,
+      category: product.category_id,
       quantity,
     };
 
@@ -77,7 +83,7 @@ const ProductDetailClient = () => {
             {product.product_images && product.product_images.length > 0 && (
               <div className="flex sm:flex-row md:flex-col gap-2 overflow-x-auto md:overflow-y-auto scrollbar-none md:min-w-[150px] md:h-[500px]">
                 <div className="flex sm:flex-row md:flex-col gap-4">
-                  {product.product_images.map((img: any) => {
+                  {product.product_images.map((img) => {
                     const imageUrl = `https://api.piknicuz.com/api/uploads/images/${img.images_src}`;
                     const isSelected = selectedImage === imageUrl;
 
@@ -122,11 +128,11 @@ const ProductDetailClient = () => {
             {Number(product.price).toLocaleString()} UZS
           </p>
 
-          {product.category && (
+          {product.category_id && (
             <p className="text-md text-gray-500 mb-2">
               Kategoriya:{" "}
               <span className="font-medium text-gray-800">
-                {product.category.name}
+                {product.category_id}
               </span>
             </p>
           )}

@@ -3,7 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 
-const page = () => {
+const Page = () => {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -127,4 +127,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

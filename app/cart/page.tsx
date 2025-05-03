@@ -7,9 +7,10 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import CartModal from "../_components/CartModal";
 import { useModalStore } from "../store/modalStore";
+import { Cart } from "../mahsulotlar/[id]/page";
 
 export default function CartPage() {
-  const [cartItems, setCartItems] = useState<any[]>([]);
+  const [cartItems, setCartItems] = useState<Cart[]>([]);
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -39,7 +40,7 @@ export default function CartPage() {
   };
 
   const total = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item.product.price * item.quantity,
     0
   );
 
@@ -58,8 +59,8 @@ export default function CartPage() {
                 <Link href={`/mahsulotlar/${item.id}`}>
                   <Image
                     className="w-[80px] h-[80px] sm:w-[120px] sm:h-[120px]"
-                    src={`https://api.piknicuz.com/api/uploads/images/${item.image_src}`}
-                    alt={item.title}
+                    src={`https://api.piknicuz.com/api/uploads/images/${item.product.image_src}`}
+                    alt={item.product.title}
                     width={124}
                     height={124}
                   />
@@ -67,10 +68,13 @@ export default function CartPage() {
                 <div className="flex justify-between items-center w-full">
                   <div className="flex flex-col">
                     <h1 className="text-[20px] font-bold text-[#000000]">
-                      {item.title}
+                      {item.product.title}
                     </h1>
                     <h1 className="text-[24px] font-bold text-[#000000]">
-                      {new Intl.NumberFormat("ru-RU").format(item.price)} UZS
+                      {new Intl.NumberFormat("ru-RU").format(
+                        item.product.price
+                      )}{" "}
+                      UZS
                     </h1>{" "}
                   </div>
                   <div className="flex flex-col items-end gap-2">

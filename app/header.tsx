@@ -8,7 +8,6 @@ import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import useProductStore from "./store/useStoreProduct";
-const pathname = usePathname;
 
 export default function Header() {
   const pathname = usePathname();
