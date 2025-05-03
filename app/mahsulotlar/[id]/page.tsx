@@ -58,7 +58,7 @@ const ProductDetailClient = () => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     const existingProductIndex = cart.findIndex(
-      (item: any) => item.id === product.id
+      (item: Cart) => item.id === product.id
     );
 
     if (existingProductIndex !== -1) {
