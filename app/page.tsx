@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Question from "./_components/question";
-import Products from "./mahsulotlar/page";
+import Products from "./_components/Products";
 
 type Category = {
   id: string;
