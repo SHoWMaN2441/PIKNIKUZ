@@ -29,15 +29,17 @@ const Products123 = ({ selectedCategory }: ProductsProps) => {
 
   const handleAddToCart = (product: Product) => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    if (cart.length === 0) {
-      cart.push({ ...product, quantity: 1 });
+
+    const existingProduct = cart.find((item: Cart) => item.id === product.id);
+
+    if (existingProduct) {
+      existingProduct.quantity += 1;
     } else {
-      const existingProduct = cart.find((item: Cart) => item.id === product.id);
-      if (existingProduct) {
-        existingProduct.quantity += 1;
-      } else {
-        cart.push({ ...product, quantity: 1 });
-      }
+      cart.push({
+        id: product.id,
+        product,
+        quantity: 1,
+      });
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
