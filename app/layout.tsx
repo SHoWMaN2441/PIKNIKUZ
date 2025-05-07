@@ -4,7 +4,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./header";
+import Header from "./_components/header";
 import Footer from "./footer";
 const poppins = localFont({
   weight: "400",

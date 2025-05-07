@@ -6,13 +6,14 @@ import { usePathname } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
 import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useState } from "react";
-import useProductStore from "./store/useStoreProduct";
+import { useEffect, useState } from "react";
+import useProductStore from "../store/useStoreProduct";
 
 export default function Header() {
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+
   const pathname = usePathname();
-  const { searchTerm, setSearchTerm, fetchProducts, cartItems } =
-    useProductStore();
+  const { searchTerm, setSearchTerm, fetchProducts } = useProductStore();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,6 +21,18 @@ export default function Header() {
     setSearchTerm(term);
     fetchProducts();
   };
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      try {
+        const cart = JSON.parse(storedCart);
+        setCartItemsCount(cart.length);
+      } catch (e) {
+        console.error("Cart parsing error:", e);
+        setCartItemsCount(0);
+      }
+    }
+  }, []);
 
   return (
     <div className="container mx-auto px-4">
@@ -95,11 +108,11 @@ export default function Header() {
           </form>
 
           <div className="relative">
-            <Link href="/cart">
+            <Link href="/cart" className="relative">
               <BsCart2 size={26} className="text-gray-600" />
-              {cartItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                  {cartItems}
+              {cartItemsCount > 0 && (
+                <span className="absolute -top-2 -right-2 z-10 bg-red-600 text-white rounded-full text-sm font-semibold w-5 h-5 flex items-center justify-center">
+                  {cartItemsCount}
                 </span>
               )}
             </Link>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Question from "./_components/question";
 import Products from "./_components/Products";
+import Comments from "./_components/Comments";
 
 type Category = {
   id: string;
@@ -134,6 +135,7 @@ export default function Home() {
       </div>
 
       <Question />
+      <Comments />
     </div>
   );
 }
