@@ -24,7 +24,6 @@ export default function Header() {
   return (
     <div className="container mx-auto px-4">
       <div className="flex justify-between items-center py-4">
-        {/* Logo */}
         <Link style={{ textDecoration: "none" }} href="/">
           <Image
             className="rounded-[50%]"
@@ -35,7 +34,6 @@ export default function Header() {
           />
         </Link>
 
-        {/* Desktop Nav */}
         <div className="hidden md:flex gap-4">
           <Link
             style={{ textDecoration: "none" }}
@@ -81,7 +79,6 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Right controls */}
         <div className="flex items-center gap-4">
           <form
             onSubmit={(e) => e.preventDefault()}
@@ -97,7 +94,6 @@ export default function Header() {
             />
           </form>
 
-          {/* Cart icon */}
           <div className="relative">
             <Link href="/cart">
               <BsCart2 size={26} className="text-gray-600" />
@@ -109,17 +105,14 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Hamburger icon */}
           <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden">
             <GiHamburgerMenu size={26} />
           </button>
         </div>
       </div>
 
-      {/* Divider */}
       <div className="border-t border-gray-300"></div>
 
-      {/* Mobile Sidebar */}
       {menuOpen && (
         <div className="md:hidden bg-white shadow-md p-4 mt-2 space-y-2">
           <Link className="block text-black" href="/">

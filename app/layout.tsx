@@ -22,9 +22,7 @@ export default function RootLayout({
       <body className={`${poppins.className}   antialiased bg-cover`}>
         <Toaster />
 
-        {/* <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md"> */}
         <Header />
-        {/* </div> */}
         {children}
 
         <Footer />
