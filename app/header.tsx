@@ -18,7 +18,7 @@ export default function Header() {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value;
     setSearchTerm(term);
-    fetchProducts(term);
+    fetchProducts();
   };
 
   return (
