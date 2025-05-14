@@ -132,7 +132,7 @@ const ProductDetailClient = () => {
             <p className="text-md text-gray-500 mb-2">
               Kategoriya:{" "}
               <span className="font-medium text-gray-800">
-                {product.category_id}
+                {product.category.name}
               </span>
             </p>
           )}

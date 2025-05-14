@@ -7,6 +7,11 @@ export type Product = {
   description: string;
   price: number;
   category_id: string;
+  category: {
+    id: string;
+    name: string;
+    description: string;
+  };
   image_src: string;
   product_images: {
     id: string;
